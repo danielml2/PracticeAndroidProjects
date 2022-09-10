@@ -34,7 +34,7 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/playerName2Tv"
+            android:id="@+id/player2NameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -70,193 +70,253 @@
 
     <GridLayout
         android:id="@+id/gameGrid"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:columnCount="5"
         android:layoutDirection="ltr"
+
         android:rowCount="4">
 
         <ImageButton
             android:id="@+id/img00"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img01"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img02"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="2"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
 
         <ImageButton
             android:id="@+id/img03"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="3"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img04"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="4"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img10"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img11"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img12"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="2"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img13"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="3"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img14"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="4"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img20"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img21"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img22"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="2"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img23"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="3"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img24"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="4"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img30"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="3"
             android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img31"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="3"
             android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img32"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="3"
             android:layout_column="2"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img33"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="3"
             android:layout_column="3"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
 
         <ImageButton
             android:id="@+id/img34"
-            android:layout_width="85dp"
-            android:layout_height="88dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="3"
             android:layout_column="4"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/goldnugget" />
+            android:padding="0dp"
+            app:srcCompat="@drawable/susdrip" />
     </GridLayout>
 
     <LinearLayout

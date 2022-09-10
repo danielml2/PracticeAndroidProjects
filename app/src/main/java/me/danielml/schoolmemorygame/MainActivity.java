@@ -34,8 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(v.getId() == playBtn.getId()) {
             Intent intent = new Intent(this, GameActivity.class);
-            intent.putExtra("player1Name", player1NameInput.getText());
-            intent.putExtra("player2Name", player2NameInput.getText());
+
+            intent.putExtra("player1Name", player1NameInput.getText().toString());
+            intent.putExtra("player2Name", player2NameInput.getText().toString());
 
             startActivity(intent);
         }
