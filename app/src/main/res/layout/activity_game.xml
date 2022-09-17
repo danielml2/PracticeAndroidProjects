@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".GameActivity">
+    tools:context=".activities.GameActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -342,7 +342,7 @@
             android:text="Score" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/restartBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"

@@ -1,9 +1,8 @@
-package me.danielml.schoolmemorygame;
+package me.danielml.schoolmemorygame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -12,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.Locale;
+
+import me.danielml.schoolmemorygame.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
