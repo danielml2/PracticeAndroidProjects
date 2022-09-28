@@ -11,18 +11,21 @@ public class GameManager {
     private Player player2;
     private GameActivity gameScreen;
 
+    private int playerTurn = 0;
+    private int gameTurns = 0;
 
     public GameManager(Player player1, Player player2, GameActivity gameScreen) {
         this.player1 = player1;
         this.player2 = player2;
         this.gameScreen = gameScreen;
         restart();
-
     }
 
     public void restart() {
         player1.resetCards();
         player2.resetCards();
+        this.playerTurn = new Random().nextInt(2);
+        this.gameTurns = 0;
         fillCardGrid();
     }
 
@@ -46,6 +49,28 @@ public class GameManager {
 
     }
 
+    public void scoreCard(int cardRow, int cardCol) {
+        Player player = playerTurn == 0 ? player1 : player2;
+        player.addCard(getCard(cardRow, cardCol));
+    }
+
+    public void nextTurn() {
+        playerTurn = (playerTurn + 1) % 2;
+        gameTurns++;
+    }
+
+    public int getPlayer1Score() {
+        return player1.getScore();
+    }
+
+    public int getPlayer2Score() {
+        return player2.getScore();
+    }
+
+    public int getTurn() {
+        return playerTurn;
+    }
+
     public void shuffle(int[] arr) {
         Random rnd = new Random();
         for (int i = arr.length - 1; i > 0; i--)
@@ -56,6 +81,10 @@ public class GameManager {
             arr[index] = arr[i];
             arr[i] = a;
         }
+    }
+
+    public boolean areSameCards(int firstRow, int firstCol, int secondRow, int secondCol) {
+        return this.cardGrid[firstRow][firstCol] == this.cardGrid[secondRow][secondCol];
     }
 
 }

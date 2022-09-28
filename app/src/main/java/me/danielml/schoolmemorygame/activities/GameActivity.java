@@ -3,11 +3,12 @@ package me.danielml.schoolmemorygame.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private TextView player1NameTv;
     private TextView player2NameTv;
 
+    private TextView player1Score, player2Score;
+
     private GameManager gameManager;
 
     private ImageButton[][] cardGridButtons;
@@ -28,6 +31,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                                 R.drawable.goofy, R.drawable.nerdsmall, R.drawable.rock1, R.drawable.rockeyebrow};
 
     private Button exitGameBtn, restartBtn;
+
+    private boolean firstClick = true;
+    private int firstRow = 0, firstCol = 0;
 
     private String player1Name = "Player 1", player2Name = "Player 2";
 
@@ -40,6 +46,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         this.player2NameTv =  findViewById(R.id.player2NameTv);
         this.exitGameBtn = findViewById(R.id.exitGameBtn);
         this.restartBtn = findViewById(R.id.restartBtn);
+        this.player1Score = findViewById(R.id.player1ScoreTv);
+        this.player2Score = findViewById(R.id.playerScore2Tv);
 
         Intent intent = getIntent();
 
@@ -66,6 +74,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 cardGridButtons[i][j].setOnClickListener(this);
             }
         }
+        updateViews();
     }
 
     @Override
@@ -80,24 +89,57 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             for(int row = 0; row < cardGridButtons.length; row++) {
                 for(int col = 0; col < cardGridButtons[row].length; col++) {
                     cardGridButtons[row][col].setImageResource(R.drawable.susdrip);
+                    cardGridButtons[row][col].setVisibility(View.VISIBLE);
                 }
             }
+            updateViews();
         }
-        else {
-            String stringID = getResources().getResourceEntryName(v.getId());
+        String stringID = getResources().getResourceEntryName(v.getId());
+        if(stringID.contains("img")) {
+                String rowColStr = stringID.split("img")[1];
+                int row = Integer.parseInt(String.valueOf(rowColStr.toCharArray()[0]));
+                int col = Integer.parseInt(String.valueOf(rowColStr.toCharArray()[1]));
 
-            String rowColStr = stringID.split("img")[1];
-            int row = Integer.parseInt(String.valueOf(rowColStr.toCharArray()[0]));
-            int col = Integer.parseInt(String.valueOf(rowColStr.toCharArray()[1]));
+                cardGridButtons[row][col].setImageResource(imageIDs[gameManager.getCard(row, col)]);
+                Toast.makeText(getApplicationContext(), row + "," + col, Toast.LENGTH_LONG).show();
+                if(firstClick) {
+                    firstRow = row;
+                    firstCol = col;
+                    firstClick = false;
+                } else {
+                    if(row != firstRow && col != firstCol && gameManager.areSameCards(firstRow, firstCol, row, col)) {
+                        cardGridButtons[firstRow][firstCol].setVisibility(View.INVISIBLE);
+                        cardGridButtons[row][col].setVisibility(View.INVISIBLE);
 
-            cardGridButtons[row][col].setImageResource(imageIDs[gameManager.getCard(row, col)]);
+                        gameManager.scoreCard(row, col);
+                    } else {
+                        Handler handler = new Handler();
+                        handler.postDelayed(() -> {
+                            cardGridButtons[firstRow][firstCol].setImageResource(R.drawable.susdrip);
+                            cardGridButtons[row][col].setImageResource(R.drawable.susdrip);
+                        }, 1500);
+                    }
+                    gameManager.nextTurn();
+                    firstClick = true;
+                    updateViews();
+            }
 
-            Toast.makeText(getApplicationContext(), row + "," + col, Toast.LENGTH_LONG).show();
         }
+    }
 
+    public void updateViews() {
+        String player1Text = "" + gameManager.getPlayer1Score();
+        String player2Text = "" + gameManager.getPlayer2Score();
+        player1Score.setText(player1Text);
+        player2Score.setText(player2Text);
 
-
-
-
+        if(gameManager.getTurn() == 0)
+        {
+            player1NameTv.setBackgroundColor(Color.GREEN);
+            player2NameTv.setBackgroundColor(Color.TRANSPARENT);
+        } else {
+            player2NameTv.setBackgroundColor(Color.GREEN);
+            player1NameTv.setBackgroundColor(Color.TRANSPARENT);
+        }
     }
 }
