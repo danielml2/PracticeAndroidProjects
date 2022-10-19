@@ -1,5 +1,7 @@
 package me.danielml.schoolmemorygame.objects;
 
+import android.util.Log;
+
 import java.util.Random;
 
 import me.danielml.schoolmemorygame.activities.GameActivity;
@@ -27,6 +29,17 @@ public class GameManager {
         this.playerTurn = new Random().nextInt(2);
         this.gameTurns = 0;
         fillCardGrid();
+    }
+
+    public void showCardsMatrix() {
+        String logText = "";
+        for(int row = 0; row < cardGrid.length; row++) {
+            for(int col = 0; col < cardGrid[row].length; col++) {
+                logText += col + " ";
+            }
+            logText += "\n";
+        }
+        Log.d("deeznuts", logText);
     }
 
     public int getCard(int row, int col) {

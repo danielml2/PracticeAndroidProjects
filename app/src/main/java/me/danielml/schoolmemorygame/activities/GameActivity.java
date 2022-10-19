@@ -101,16 +101,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 int col = Integer.parseInt(String.valueOf(rowColStr.toCharArray()[1]));
 
                 cardGridButtons[row][col].setImageResource(imageIDs[gameManager.getCard(row, col)]);
-                Toast.makeText(getApplicationContext(), row + "," + col, Toast.LENGTH_LONG).show();
+                cardGridButtons[row][col].setClickable(false);
+            Toast.makeText(getApplicationContext(), row + "," + col, Toast.LENGTH_LONG).show();
                 if(firstClick) {
                     firstRow = row;
                     firstCol = col;
                     firstClick = false;
                 } else {
-                    if(row != firstRow && col != firstCol && gameManager.areSameCards(firstRow, firstCol, row, col)) {
+                    if(gameManager.areSameCards(firstRow, firstCol, row, col)) {
                         cardGridButtons[firstRow][firstCol].setVisibility(View.INVISIBLE);
                         cardGridButtons[row][col].setVisibility(View.INVISIBLE);
-
                         gameManager.scoreCard(row, col);
                     } else {
                         Handler handler = new Handler();
@@ -119,6 +119,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                             cardGridButtons[row][col].setImageResource(R.drawable.susdrip);
                         }, 1500);
                     }
+                    cardGridButtons[row][col].setClickable(true);
+                    cardGridButtons[firstRow][firstCol].setClickable(true);
                     gameManager.nextTurn();
                     firstClick = true;
                     updateViews();
