@@ -67,6 +67,10 @@ public class GameManager {
         player.addCard(getCard(cardRow, cardCol));
     }
 
+    public Player currentPlayer() {
+        return playerTurn == 0 ? player1 : player2;
+    }
+
     public void nextTurn() {
         playerTurn = (playerTurn + 1) % 2;
         gameTurns++;

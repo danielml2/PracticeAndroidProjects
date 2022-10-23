@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="400dp"
+    android:layout_height="225dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/staticTextDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Your Cards"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dialogPlayerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="your mom" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="378dp"
+        android:layout_height="131dp"
+        android:layout_gravity="center"
+        app:columnCount="5">
+
+        <ImageButton
+            android:id="@+id/imgCard6"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="1"
+            app:layout_row="1"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard7"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="2"
+            app:layout_row="1"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard8"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="3"
+            app:layout_row="1"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard9"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="4"
+            app:layout_row="1"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard5"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="0"
+            app:layout_row="1"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard0"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="0"
+            app:layout_row="0"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard1"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="1"
+            app:layout_row="0"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard2"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="2"
+            app:layout_row="0"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard3"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="3"
+            app:layout_row="0"
+            app:srcCompat="@drawable/deadsmall" />
+
+        <ImageButton
+            android:id="@+id/imgCard4"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="7dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            app:layout_column="4"
+            app:layout_row="0"
+            app:srcCompat="@drawable/deadsmall" />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <Button
+        android:id="@+id/dialogBackBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back" />
+
+</LinearLayout>

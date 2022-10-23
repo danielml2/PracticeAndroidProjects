@@ -2,6 +2,7 @@ package me.danielml.schoolmemorygame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -30,12 +31,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private final int[] imageIDs = {R.drawable.deadsmall, R.drawable.emoji1, R.drawable.emoji2, R.drawable.emoji3, R.drawable.emoji4, R.drawable.emoji5,
                                 R.drawable.goofy, R.drawable.nerdsmall, R.drawable.rock1, R.drawable.rockeyebrow};
 
-    private Button exitGameBtn, restartBtn;
+    private Button exitGameBtn, restartBtn, showCardsBtn;
 
     private boolean firstClick = true;
     private int firstRow = 0, firstCol = 0;
 
     private String player1Name = "Player 1", player2Name = "Player 2";
+
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         this.player2NameTv =  findViewById(R.id.player2NameTv);
         this.exitGameBtn = findViewById(R.id.exitGameBtn);
         this.restartBtn = findViewById(R.id.restartBtn);
+        this.showCardsBtn = findViewById(R.id.cardsButton);
         this.player1Score = findViewById(R.id.player1ScoreTv);
         this.player2Score = findViewById(R.id.playerScore2Tv);
 
@@ -53,6 +57,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         exitGameBtn.setOnClickListener(this);
         restartBtn.setOnClickListener(this);
+        showCardsBtn.setOnClickListener(this);
 
 
         if(intent != null) {
@@ -93,7 +98,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             updateViews();
-        }
+        }else if(v.getId() == showCardsBtn.getId())
+            initShowCardsDialog();
+
         String stringID = getResources().getResourceEntryName(v.getId());
         if(stringID.contains("img")) {
                 String rowColStr = stringID.split("img")[1];
@@ -108,19 +115,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     firstCol = col;
                     firstClick = false;
                 } else {
+                    boolean turnClickableBack = true;
                     if(gameManager.areSameCards(firstRow, firstCol, row, col)) {
                         cardGridButtons[firstRow][firstCol].setVisibility(View.INVISIBLE);
                         cardGridButtons[row][col].setVisibility(View.INVISIBLE);
+                        turnClickableBack = false;
                         gameManager.scoreCard(row, col);
                     } else {
                         Handler handler = new Handler();
+                        setButtonsState(false);
                         handler.postDelayed(() -> {
                             cardGridButtons[firstRow][firstCol].setImageResource(R.drawable.susdrip);
                             cardGridButtons[row][col].setImageResource(R.drawable.susdrip);
+                            setButtonsState(true);
                         }, 1500);
                     }
-                    cardGridButtons[row][col].setClickable(true);
-                    cardGridButtons[firstRow][firstCol].setClickable(true);
                     gameManager.nextTurn();
                     firstClick = true;
                     updateViews();
@@ -144,4 +153,47 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             player1NameTv.setBackgroundColor(Color.TRANSPARENT);
         }
     }
+
+    public void setButtonsState(boolean clickEnabled) {
+        for(int row = 0; row < cardGridButtons.length; row++) {
+            for(int col = 0; col < cardGridButtons[row].length; col++) {
+                cardGridButtons[row][col].setClickable(clickEnabled);
+            }
+        }
+    }
+
+    public void initShowCardsDialog() {
+
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.player_hand_layout);
+        dialog.setCancelable(true);
+
+        Player currentPlayer = gameManager.currentPlayer();
+        dialog.setTitle("Your Card's Hand");
+
+        TextView dialogPlayerName = dialog.findViewById(R.id.dialogPlayerName);
+        dialogPlayerName.setText(currentPlayer.getName());
+
+        Button exitDialog = dialog.findViewById(R.id.dialogBackBtn);
+        exitDialog.setOnClickListener((v) -> dialog.cancel());
+
+        ImageButton[] cardButtons = new ImageButton[10];
+        for(int i = 0; i < cardButtons.length; i++) {
+            String stringID = "imgCard" + i ;
+            int resID = getResources().getIdentifier(stringID, "id", getPackageName());
+            cardButtons[i] = dialog.findViewById(resID);
+            cardButtons[i].setVisibility(View.INVISIBLE);
+        }
+
+        for(int i = 0; i < currentPlayer.getCards().size(); i++) {
+            cardButtons[i].setImageResource(imageIDs[currentPlayer.getCards().get(i)]);
+            cardButtons[i].setVisibility(View.VISIBLE);
+        }
+
+        dialog.show();
+
+
+    }
+
+
 }
